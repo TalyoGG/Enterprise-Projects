@@ -1,0 +1,31 @@
+🚀 Enterprise Networking Project: Dual-Office Infrastructure with GRE Tunnel Integration 🌐
+
+Successfully designed and implemented a robust enterprise network connecting two office sites (Headquarters and Branch Office) via a GRE Tunnel traversing the public ISP network. This project focused on maximizing network availability, security, and scalability, aligning with enterprise-grade best practices.
+
+🔧 Key Implementations:
+
+Configured router and switch fundamentals, including secure access with encrypted credentials, hostname conventions, and password policies.
+
+Enabled both SSH and Telnet for secure remote device management across all network equipment.
+
+Deployed OSPF routing with area segmentation: HQ: Area 10 Branch Office: Area 20 GRE Tunnel Backbone: Area 0
+
+Implemented floating static routes to support WAN failover through a secondary GRE tunnel (via ISP 2), enhancing WAN redundancy and uptime.
+
+Applied ACLs on ISP routers to strictly permit traffic from public IPs, enhancing perimeter security.
+
+Designed and implemented redundancy of network devices at the core and access layers in both offices (dual Layer 3 core switches + dual access switches).
+
+Configured LACP EtherChannel on links between network devices to improve link reliability and aggregate bandwidth.
+
+Enabled SVIs on core Layer 3 switches for efficient inter-VLAN routing.
+
+Deployed Per-VLAN Spanning Tree (PVST) with: Core 1 as the Primary Root Bridge Core 2 as the Secondary Root Bridge
+
+Configured HSRP on core switches to maintain high availability during switch failure scenarios - increasing availability when Core 1 becomes unavailable
+
+Applied port security on all access ports to prevent unauthorized device access.
+
+Designed and deployed VLAN segmentation per department on access switches.
+
+Enforced access control on the server VLAN, restricting access to Server 1 to only the IT department at both locations.
