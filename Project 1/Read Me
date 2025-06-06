@@ -1,6 +1,7 @@
 # 🧩 Enterprise Network Infrastructure Configuration
 
-This project demonstrates the design and deployment of a secure, scalable, and highly available enterprise network spanning both main and branch office environments. The configuration emphasizes robust access control, encrypted communication, centralized VLAN management, and high availability.
+This project demonstrates the design and deployment of a secure, scalable, and highly available enterprise network spanning both main and branch office environments.
+The configuration emphasizes robust access control, encrypted communication, centralized VLAN management, and high availability.
 
 ---
 
@@ -54,16 +55,33 @@ This project demonstrates the design and deployment of a secure, scalable, and h
 - **Inter-VLAN Routing**  
   - Enabled on both **main and branch routers**, allowing seamless communication between VLANs within and across office locations.
 
+- **Dynamic Routing with OSPF**  
+  - Configured **OSPF** across the internal network to enable scalable and efficient routing between VLANs and locations.
+
 - **Port Security**  
   - Implemented on all **access layer switch ports** to restrict access to authorized devices and mitigate MAC address spoofing.
 
 ---
 
-## 📌 Use Case Summary
+## 🧰 Technologies Used
 
-This network architecture is ideal for:
-- **Secured administrative access**
-- **Encrypted site-to-site data exchange**
-- **Centralized VLAN and switch management**
-- **Failover-ready core switching and routing**
-- **Scalable, layered network design**
+- **Routing & Tunneling:**  
+  - OSPF (Open Shortest Path First)  
+  - IPsec VPN (Site-to-Site Tunnel)
+
+- **Security & Access Control:**  
+  - SSH / Telnet  
+  - ACLs (Access Control Lists)  
+  - NAT (Network Address Translation)  
+  - Port Security  
+  - Encrypted device credentials
+
+- **Switching & Redundancy:**  
+  - HSRP (Hot Standby Router Protocol)  
+  - VTP (VLAN Trunking Protocol)  
+  - STP (Spanning Tree Protocol)  
+  - PortFast & BPDU Guard  
+  - SVIs (Switch Virtual Interfaces)
+
+- **Network Design Tools:**  
+  - Cisco Packet Tracer
