@@ -1,31 +1,69 @@
-🚀 Enterprise Networking Project: Dual-Office Infrastructure with GRE Tunnel Integration 🌐
+# 🧩 Enterprise Network Infrastructure Configuration
 
-Successfully designed and implemented a robust enterprise network connecting two office sites (Headquarters and Branch Office) via a GRE Tunnel traversing the public ISP network. This project focused on maximizing network availability, security, and scalability, aligning with enterprise-grade best practices.
+This project demonstrates the design and deployment of a secure, scalable, and highly available enterprise network spanning both main and branch office environments. The configuration emphasizes robust access control, encrypted communication, centralized VLAN management, and high availability.
 
-🔧 Key Implementations:
+---
 
-Configured router and switch fundamentals, including secure access with encrypted credentials, hostname conventions, and password policies.
+## 🔐 Security & Access Control
 
-Enabled both SSH and Telnet for secure remote device management across all network equipment.
+- **Encrypted Device Credentials**  
+  - Configured unique hostnames for all network devices.  
+  - Encrypted all local credentials (console, VTY, and privileged access) to ensure secure authentication.
 
-Deployed OSPF routing with area segmentation: HQ: Area 10 Branch Office: Area 20 GRE Tunnel Backbone: Area 0
+- **Secure Remote Access (SSH & Telnet)**  
+  - Enabled SSH and Telnet access on all network devices.  
+  - Applied ACLs to allow remote sessions **only from IT department local hosts**.
 
-Implemented floating static routes to support WAN failover through a secondary GRE tunnel (via ISP 2), enhancing WAN redundancy and uptime.
+- **IT Department Server Isolation**  
+  - Configured **Server 3 (Branch Office)** to be accessible **only by IT department hosts** at both the main and branch offices.
 
-Applied ACLs on ISP routers to strictly permit traffic from public IPs, enhancing perimeter security.
+- **ACL for NAT-bound Traffic**  
+  - Configured ACLs to **permit only NAT-translated internal addresses** to access external networks, enhancing outbound traffic security.
 
-Designed and implemented redundancy of network devices at the core and access layers in both offices (dual Layer 3 core switches + dual access switches).
+---
 
-Configured LACP EtherChannel on links between network devices to improve link reliability and aggregate bandwidth.
+## 🌐 Secure Connectivity
 
-Enabled SVIs on core Layer 3 switches for efficient inter-VLAN routing.
+- **Site-to-Site VPN via IPsec**  
+  - Established a secure **IPsec VPN tunnel** between main and branch office routers to ensure encrypted communication over public networks.
 
-Deployed Per-VLAN Spanning Tree (PVST) with: Core 1 as the Primary Root Bridge Core 2 as the Secondary Root Bridge
+- **NAT Configuration**  
+  - Configured **NAT on all edge routers** using ISP-provided public IP addresses to enable secure internet access for internal hosts.
 
-Configured HSRP on core switches to maintain high availability during switch failure scenarios - increasing availability when Core 1 becomes unavailable
+---
 
-Applied port security on all access ports to prevent unauthorized device access.
+## 🔁 High Availability & Redundancy
 
-Designed and deployed VLAN segmentation per department on access switches.
+- **HSRP (Hot Standby Router Protocol)**  
+  - Configured on **core switches** to ensure default gateway **redundancy and failover protection**.
 
-Enforced access control on the server VLAN, restricting access to Server 1 to only the IT department at both locations.
+- **Spanning Tree Protocol (STP)**  
+  - **Core Switch 1** set as **Primary Root Bridge** for all VLANs.  
+  - **Core Switch 2** configured as **Secondary Root Bridge** for all VLANs to maintain loop-free topology and optimal path selection.
+
+- **PortFast & BPDU Guard**  
+  - Enabled on all access ports to accelerate convergence and protect against rogue switch connections.
+
+---
+
+## 🧠 Network Management & Scalability
+
+- **VTP (VLAN Trunking Protocol)**  
+  - Configured **Core Switch 1** as the **VTP Server**, propagating VLAN configurations automatically across the switching infrastructure.
+
+- **Inter-VLAN Routing**  
+  - Enabled on both **main and branch routers**, allowing seamless communication between VLANs within and across office locations.
+
+- **Port Security**  
+  - Implemented on all **access layer switch ports** to restrict access to authorized devices and mitigate MAC address spoofing.
+
+---
+
+## 📌 Use Case Summary
+
+This network architecture is ideal for:
+- **Secured administrative access**
+- **Encrypted site-to-site data exchange**
+- **Centralized VLAN and switch management**
+- **Failover-ready core switching and routing**
+- **Scalable, layered network design**
